@@ -2,7 +2,7 @@
   <div class="home">
     <HeaderHeyOutfit/>
     <Carousel/>
-   
+    <SliderProduct/>
 
   </div>
 </template>
@@ -12,13 +12,15 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HeaderHeyOutfit from '@/components/HeaderHeyOutfit.vue'
 import Carousel from '@/components/Carousel.vue'
+import SliderProduct from '@/components/SliderProduct.vue'
 
 
 export default {
   name: 'home',
   components: {
     HeaderHeyOutfit,
-    Carousel
+    Carousel,
+    SliderProduct
   }
 }
 </script>
