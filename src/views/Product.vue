@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+                        <router-link to="/"><i class="fa fa-home"></i> Home</router-link>
                         <span>Detail</span>
                     </div>
                 </div>
@@ -75,6 +75,10 @@
         </div>
     </section>
     <!-- Product Shop Section End -->
+
+    <!-- Product Relate -->
+    <ProductRelate/>
+    <!-- Product Relate End -->
     <FooterHeyOutfit/>
   </div>
 </template>
@@ -84,6 +88,8 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HeaderHeyOutfit from '@/components/HeaderHeyOutfit.vue'
 import FooterHeyOutfit from '@/components/FooterHeyOutfit.vue'
+import ProductRelate from '@/components/ProductRelate.vue'
+
 import carousel from 'vue-owl-carousel';
 
 
@@ -92,7 +98,8 @@ export default {
   components: {
     HeaderHeyOutfit,
     FooterHeyOutfit,
-    carousel
+    carousel,
+    ProductRelate
   },
   data(){
       return {
