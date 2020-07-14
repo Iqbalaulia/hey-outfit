@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-8">
-                                <h4 class="mb-4">
+                                <h4 class="mb-4 text-left">
                                     Informasi Pembeli:
                                 </h4>
                                 <div class="user-checkout text-left">
@@ -105,7 +105,7 @@
                                         <li class="subtotal mt-3">No. Rekening <span>2208 1996 1403</span></li>
                                         <li class="subtotal mt-3">Nama Penerima <span>Shayna</span></li>
                                     </ul>
-                                    <a href="success.html" class="proceed-btn">I ALREADY PAID</a>
+                                     <router-link to="/success-cart"><a href="#" class="proceed-btn">I ALREADY PAID</a></router-link>
                                 </div>
                             </div>
                         </div>

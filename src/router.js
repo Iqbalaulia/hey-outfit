@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Product from './views/Product.vue'
 import ShoppingCart from './views/ShoppingCart.vue'
+import SuccessShopping from './views/SuccessShopping.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,10 @@ export default new Router({
       path: '/cart',
       name: 'ShoppingCart',
       component: ShoppingCart
+    },{
+      path: '/success-cart',
+      name: 'SuccessShopping',
+      component: SuccessShopping
     },
     
   ]
