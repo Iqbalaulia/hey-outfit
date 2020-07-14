@@ -3,7 +3,9 @@
     <HeaderHeyOutfit/>
     <Carousel/>
     <SliderProduct/>
-
+    <InstaHeyOutfit/>
+    <PartnerHeyOutfit/>
+    <FooterHeyOutfit/>
   </div>
 </template>
 
@@ -13,6 +15,9 @@
 import HeaderHeyOutfit from '@/components/HeaderHeyOutfit.vue'
 import Carousel from '@/components/Carousel.vue'
 import SliderProduct from '@/components/SliderProduct.vue'
+import InstaHeyOutfit from '@/components/InstaHeyOutfit.vue'
+import PartnerHeyOutfit from '@/components/PartnerHeyOutfit.vue'
+import FooterHeyOutfit from '@/components/FooterHeyOutfit.vue'
 
 
 export default {
@@ -20,7 +25,10 @@ export default {
   components: {
     HeaderHeyOutfit,
     Carousel,
-    SliderProduct
+    SliderProduct,
+    InstaHeyOutfit,
+    PartnerHeyOutfit,
+    FooterHeyOutfit
   }
 }
 </script>
