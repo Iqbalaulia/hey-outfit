@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-      <HeaderHeyOutfit/>
+    <HeaderHeyOutfit/>
+    <Carousel/>
+   
+
   </div>
 </template>
 
@@ -8,11 +11,14 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HeaderHeyOutfit from '@/components/HeaderHeyOutfit.vue'
+import Carousel from '@/components/Carousel.vue'
+
 
 export default {
   name: 'home',
   components: {
-    HeaderHeyOutfit
+    HeaderHeyOutfit,
+    Carousel
   }
 }
 </script>
