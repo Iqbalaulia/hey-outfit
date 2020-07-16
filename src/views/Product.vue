@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="pd-desc">
                                     <p>
-                                        {!! productDetails.description !!}
+                                        {{ productDetails.description  }}
                                     </p>
                                     
                                     <h4>${{ productDetails.price}}</h4>
@@ -99,7 +99,7 @@ export default {
   },
   data(){
       return {
-          photoProduct: "img/mickey1.jpg",
+          photoProduct: '',
           thumbs:[
               "img/mickey1.jpg",
               "img/mickey2.jpg",
@@ -113,8 +113,18 @@ export default {
   methods: {
       changeImage(urlImage) {
           this.photoProduct = urlImage;
+      },
+      setDataPicture(data){
+
+        // replace data object productDetails dengan data dari API
+        this.productDetails = data;
+
+        // replace value gambar default dengan data dari API galleries
+        this.photoProduct = data.galleries[0].photo;
+
       }
   },
+  
   // menampilkan halaman detail berdsarkan id yang dilempar pada url [1]
   mounted(){
         axios
@@ -123,9 +133,9 @@ export default {
                 id: this.$route.params.id
             }
         })
-        .then(res => (this.productDetails = res.data.data))
+        // set data picture default
+        .then(res => (this.setDataPicture(res.data.data)))
         // disable eslint
-        .catch(err => console.log(err));
     }
   
   
