@@ -51,7 +51,7 @@
                                         <h4>${{ productDetails.price}}</h4>
                                     </div>
                                     <div class="quantity">
-                                        <a @click="saveKeranjang(productDetails.id)" href="#"
+                                        <a @click="saveKeranjang(productDetails.id , productDetails.name , productDetails.price, productDetails.galleries[0].photo)" href="#"
                                             class="primary-btn pd-cart">Add To Cart </a>
                                     </div>
                                 </div>
@@ -114,8 +114,17 @@
             },
 
             // menyimpan pada local storage[2]
-            saveKeranjang(idProduct) {
-                this.keranjangUser.push(idProduct);
+            saveKeranjang(idProduct, nameProduct, priceProduct, photoProduct) {
+
+                var productStored = {
+                    "id": idProduct,
+                    "name": nameProduct,
+                    "price": priceProduct,
+                    "photo": photoProduct
+                }
+
+
+                this.keranjangUser.push(productStored);
                 const parsed = JSON.stringify(this.keranjangUser);
                 localStorage.setItem('keranjangUser', parsed);
             }
