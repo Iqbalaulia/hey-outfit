@@ -51,8 +51,10 @@
                                         <h4>${{ productDetails.price}}</h4>
                                     </div>
                                     <div class="quantity">
+                                        <router-link to="/cart">
                                         <a @click="saveKeranjang(productDetails.id , productDetails.name , productDetails.price, productDetails.galleries[0].photo)" href="#"
                                             class="primary-btn pd-cart">Add To Cart </a>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -127,6 +129,8 @@
                 this.keranjangUser.push(productStored);
                 const parsed = JSON.stringify(this.keranjangUser);
                 localStorage.setItem('keranjangUser', parsed);
+
+                
             }
 
         },
