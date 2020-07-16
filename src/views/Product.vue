@@ -26,23 +26,18 @@
                             <div class="product-pic-zoom">
                                 <img class="product-big-img" :src="photoProduct" alt="" />
                             </div>
-                            <div class="product-thumbs">
+                            <div class="product-thumbs" v-if="productDetails.galleries.length > 0">
                                 <carousel class="product-thumbs-track ps-slider" :items="3" :nav="false" :dots="false" >
-                                    <div class="pt" @click="changeImage(thumbs[0])" :class="thumbs[0] == photoProduct ? 'active' : '' ">
-                                        <img src="img/mickey1.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[1])" :class="thumbs[1] == photoProduct ? 'active' : '' ">
-                                        <img src="img/mickey2.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[2])" :class="thumbs[2] == photoProduct ? 'active' : '' ">
-                                        <img src="img/mickey3.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" @click="changeImage(thumbs[3])" :class="thumbs[3] == photoProduct ? 'active' : '' ">
-                                        <img src="img/mickey4.jpg" alt="" />
-                                    </div>
+                                    
+                                    <!-- menampilkan gambar product ketika diklik -->
+                                    <div
+                                    v-for="imageProduct in productDetails.galleries"
+                                    :key ="imageProduct.id"
+                                    class="pt" 
+                                    @click="changeImage(imageProduct.photo)" 
+                                    :class="imageProduct.photo == photoProduct ? 'active' : '' ">
+                                        <img :src="imageProduct.photo" alt="" />
+                                    </div>                                   
                                 </carousel>
                             </div>
                         </div>
