@@ -59,22 +59,23 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="namaLengkap">Nama lengkap</label>
+                                            <!-- insert data pada database API [1] -->
                                             <input type="text" class="form-control" id="namaLengkap"
-                                                aria-describedby="namaHelp" placeholder="Masukan Nama">
+                                                aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="customerInfo.name">
                                         </div>
                                         <div class="form-group">
                                             <label for="namaLengkap">Email Address</label>
                                             <input type="email" class="form-control" id="emailAddress"
-                                                aria-describedby="emailHelp" placeholder="Masukan Email">
+                                                aria-describedby="emailHelp" placeholder="Masukan Email" v-model="customerInfo.email">
                                         </div>
                                         <div class="form-group">
                                             <label for="namaLengkap">No. HP</label>
                                             <input type="text" class="form-control" id="noHP"
-                                                aria-describedby="noHPHelp" placeholder="Masukan No. HP">
+                                                aria-describedby="noHPHelp" placeholder="Masukan No. HP" v-model="customerInfo.number">
                                         </div>
                                         <div class="form-group">
                                             <label for="alamatLengkap">Alamat Lengkap</label>
-                                            <textarea class="form-control" id="alamatLengkap" rows="3"></textarea>
+                                            <textarea class="form-control" id="alamatLengkap" rows="3" v-model="customerInfo.address"></textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -95,7 +96,10 @@
                                         <li class="subtotal mt-3">No. Rekening <span>2208 1996 1403</span></li>
                                         <li class="subtotal mt-3">Nama Penerima <span>Shayna</span></li>
                                     </ul>
-                                     <router-link to="/success-cart"><a href="#" class="proceed-btn">I ALREADY PAID</a></router-link>
+                                     <!-- <router-link to="/success-cart"> -->
+                                     <!-- mengirim data ke database API [5] -->
+                                     <a @click="checkout()" to="/success-cart" class="proceed-btn">I ALREADY PAID</a>
+                                     <!-- </router-link> -->
                                 </div>
                             </div>
                         </div>
@@ -113,13 +117,25 @@
     import HeaderHeyOutfit from '@/components/HeaderHeyOutfit.vue'
 
     import FooterHeyOutfit from '@/components/FooterHeyOutfit.vue'
+    
+    // insert data pada database API [2]
+    import axios from "axios";
 
     export default {
         name: "ShoppingCart",
         data() {
             return {                
                 // menampilkan dari local storage[0]
-                keranjangUser: []
+                keranjangUser: [],
+
+                // insert data pada database API [0]
+                // bersifat object
+                customerInfo: {
+                    name: '',
+                    email: '',
+                    number: '',
+                    address: ''
+                }
             };
         },
         components: {
@@ -135,7 +151,31 @@
             localStorage.setItem('keranjangUser', parsed);
             window.location.reload();
 
+            },
+        
+        // insert data pada database API [3]
+        checkout(){
+            let productIds = this.keranjangUser.map(function(product){
+                return product.id
+            });
+
+            let checkoutData = {
+                'name': this.customerInfo.name,
+                'email': this.customerInfo.email,
+                'number': this.customerInfo.number,
+                'address': this.customerInfo.address,
+                'transaction_total': this.totalBiaya,
+                'transaction_status': 'PENDING',
+                'transaction_details': productIds
             }
+
+            // mengirim data ke database API [4]
+            axios
+            .post('http://shayna-backend.belajarkoding.com/api/checkout', checkoutData)
+            .then(() => this.$router.push('success-cart'))
+            .catch(err => console.log(err));
+
+        }
 
         },
          mounted(){
