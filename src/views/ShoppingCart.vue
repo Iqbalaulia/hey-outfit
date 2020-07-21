@@ -87,9 +87,10 @@
                                 <div class="proceed-checkout text-left">
                                     <ul>
                                         <li class="subtotal">ID Transaction <span>#SH12000</span></li>
-                                        <li class="subtotal mt-3">Subtotal <span>$240.00</span></li>
-                                        <li class="subtotal mt-3">Pajak <span>10%</span></li>
-                                        <li class="subtotal mt-3">Total Biaya <span>$440.00</span></li>
+                                         <!--  menghitung total belanja dan menampilkan total harga [1] -->
+                                        <li class="subtotal mt-3">Subtotal <span>${{ totalHarga }}.00</span></li>
+                                        <li class="subtotal mt-3">Pajak <span>10% {{ pajakBarang }}.00</span></li>
+                                        <li class="subtotal mt-3">Total Biaya <span>${{ totalBiaya }}.00</span></li>
                                         <li class="subtotal mt-3">Bank Transfer <span>Mandiri</span></li>
                                         <li class="subtotal mt-3">No. Rekening <span>2208 1996 1403</span></li>
                                         <li class="subtotal mt-3">Nama Penerima <span>Shayna</span></li>
@@ -146,7 +147,23 @@
                     localStorage.removeItem('keranjangUser');
                 }
             }
+        },
+         // menghitung total belanja [0]
+        computed:{
+        totalHarga(){
+            return this.keranjangUser.reduce(function(items, data){
+                return items + data.price;
+            }, 0 );
+        },
+        // menghitung pajak suatu barang
+        pajakBarang(){
+            return (this.totalHarga * 10) / 100;
+        },
+        // menghitung total barang + pajak barang
+        totalBiaya(){
+            return this.totalHarga + this.pajakBarang;
         }
+    }
     }
 </script>
 

@@ -66,7 +66,9 @@
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+
+                                        <!--  menghitung total belanja dan menampilkan total harga [1] -->
+                                        <h5>${{ totalHarga }}.00</h5>
                                     </div>
                                     <div class="select-button">
                                        
@@ -116,6 +118,14 @@ export default {
                     localStorage.removeItem('keranjangUser');
                 }
             }
+    },
+    // menghitung total belanja [0]
+    computed:{
+        totalHarga(){
+            return this.keranjangUser.reduce(function(items, data){
+                return items + data.price;
+            }, 0 );
+        }
     }
     
 }
