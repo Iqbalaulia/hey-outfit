@@ -69,7 +69,9 @@
                                         <h5>$120.00</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                       
+                                        <router-link to="/cart" class="primary-btn view-card">VIEW CARD  </router-link>
+
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -97,9 +99,9 @@ export default {
     methods:{
         // menghapus isi keranjang [0]
         removeItem(index){
-            // menghapus satu data dari local storage
+            // menghapus satu data dari local storage[1]
             this.keranjangUser.splice(index, 1);  
-            // menyimpan kondisi terbaru ketika menghapus local storage
+            // menyimpan kondisi terbaru ketika menghapus local storage[2]
             const parsed = JSON.stringify(this.keranjangUser);
             localStorage.setItem('keranjangUser', parsed);
         }
