@@ -1,5 +1,7 @@
 # hey-outfit
 
+Merupakan aplikasi jual beli pakaian layaknya ecommerce. Pada heyoutfit customer tidak perlu melakukan login . Ketika melakukan transaksi data akan tersimpan pada local storage browser customer. Aplikasi ini akan terintegrasi dengan API.
+
 ## Project setup
 ```
 npm install
