@@ -61,11 +61,11 @@ export default {
     data(){
          return{
             products: [],
-
             // menyimpan pada local storage[0]
             keranjangUser: []
          };
     },
+   
     methods: {
           // menyimpan pada local storage[2]
             saveKeranjang(idProduct, nameProduct, priceProduct, photoProduct) {

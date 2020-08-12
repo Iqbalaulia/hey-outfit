@@ -50,7 +50,7 @@
                                                             <h6>{{ keranjang.name }}</h6>
                                                         </div>
                                                     </td>
-                                                    <td @click="removeItem(keranjangUser.index)" class="si-close">
+                                                    <td @click="removeItem(keranjang.id)" class="si-close">
                                                         <i class="ti-close"></i>
                                                     </td>
                                                 </tr>
@@ -100,12 +100,19 @@ export default {
         },
     methods:{
         // menghapus isi keranjang [0]
-        removeItem(index){
+        removeItem(idx){
             // menghapus satu data dari local storage[1]
-            this.keranjangUser.splice(index, 1);  
+            let kerangjangUserStorage = JSON.parse(localStorage.getItem("keranjangUser"));
+            let itemKeranjangUserStorage = kerangjangUserStorage.map(itemKeranjangUserStorage => itemKeranjangUserStorage.id);
+            let index = itemKeranjangUserStorage.findIndex(id => id == idx);
+            
             // menyimpan kondisi terbaru ketika menghapus local storage[2]
-            const parsed = JSON.stringify(this.keranjangUser);
-            localStorage.setItem('keranjangUser', parsed);
+            this.keranjangUser.splice(index, 1);
+            
+            // melakukan update ke local storage [3]
+            let parsed = JSON.stringify(this.keranjangUser);
+            localStorage.setItem("keranjangUser", parsed);
+            window.location.reload();
         }
 
     },
